@@ -15,7 +15,63 @@
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+  height: 100svh;
+  width: 100svw;
+}
+
+#BlueLineButton {
+  width: 12rem;
+  height: 3.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid black;
+  background-color: #0089ac;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  user-select: none;
+  color: white;
+}
+#RedLineButton {
+  width: 12rem;
+  height: 3.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid black;
+  background-color: #c0253a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  user-select: none;
+  color: white;
+}
+
+#BlueLineButtonActive {
+  width: 12rem;
+  height: 3.5rem;
+  border-radius: 0.5rem;
+  background-color: #0089ac;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  box-shadow: inset 0 0 0 4px #41585f;
+  user-select: none;
+  color: white;
+}
+#RedLineButtonActive {
+  width: 12rem;
+  height: 3.5rem;
+  border-radius: 0.5rem;
+  background-color: #c0253a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  box-shadow: inset 0 0 0 4px #41585f;
+  user-select: none;
+  color: white;
 }
