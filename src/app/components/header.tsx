@@ -1,8 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useContext } from "react";
+import { TopLevelContext } from "../context/toplevelcontext";
 
 export default function Header() {
-  const [pressed, setPressed] = useState("red");
+  const { active, setActive } = useContext(TopLevelContext);
   return (
     <header
       className={
@@ -10,17 +11,17 @@ export default function Header() {
       }
     >
       <div
-        id={pressed === "red" ? "RedLineButtonActive" : "RedLineButton"}
+        id={active === "red" ? "RedLineButtonActive" : "RedLineButton"}
         onClick={() => {
-          setPressed("red");
+          setActive("red");
         }}
       >
         REDLINE
       </div>
       <div
-        id={pressed === "blue" ? "BlueLineButtonActive" : "BlueLineButton"}
+        id={active === "blue" ? "BlueLineButtonActive" : "BlueLineButton"}
         onClick={() => {
-          setPressed("blue");
+          setActive("blue");
         }}
       >
         BLUELINE
