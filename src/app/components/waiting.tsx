@@ -2,14 +2,15 @@ import { useContext } from "react";
 import { TopLevelContext } from "../context/toplevelcontext";
 
 export default function Waiting() {
-  const { riding, setEndTime, startTime, endTime } =
+  const { riding, startTime, setStartTime, setRiding, setDisable } =
     useContext(TopLevelContext);
 
   const postData = async () => {
     const formData = new FormData();
-    formData.append("start", riding.split(";")[1]);
+    formData.append("start", riding.split(":")[1]);
     formData.append("end", riding.split(":")[2]);
-    formData.append("difference", endTime - startTime + "");
+    formData.append("difference", Date.now() / 1000 - startTime + "");
+
     try {
       const response = await fetch("/api/time", {
         method: "POST",
@@ -17,6 +18,9 @@ export default function Waiting() {
       });
       const data = await response.json();
       console.log(data);
+      setStartTime(0);
+      setRiding("");
+      setDisable(false);
     } catch (err: unknown) {
       if (err instanceof Error) {
         return new Response(
@@ -32,7 +36,6 @@ export default function Waiting() {
     }
   };
   const handleClick = () => {
-    setEndTime(Date.now() / 1000);
     postData();
   };
 
