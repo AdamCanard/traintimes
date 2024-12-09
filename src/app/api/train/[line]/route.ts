@@ -3,7 +3,7 @@ export async function GET(
   { params }: { params: Promise<{ line: string }> },
 ) {
   const line = (await params).line;
-  if (line === "red") {
+  if (line === "Red") {
     return new Response(
       JSON.stringify({
         trains: [
@@ -42,7 +42,7 @@ export async function GET(
         status: 200,
       },
     );
-  } else if (line === "blue") {
+  } else if (line === "Blue") {
     return new Response(
       JSON.stringify({
         trains: [
