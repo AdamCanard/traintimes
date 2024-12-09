@@ -20,7 +20,7 @@ interface TopLevelContextType {
 export const TopLevelContext = createContext({} as TopLevelContextType);
 
 export default function TopLevel(props: { children: React.ReactNode }) {
-  const [active, setActive] = useState("red");
+  const [active, setActive] = useState("Red");
   const [direction, setDirection] = useState(0);
   const [disable, setDisable] = useState(false);
   const [startTime, setStartTime] = useState(0);

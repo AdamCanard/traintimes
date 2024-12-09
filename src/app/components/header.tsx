@@ -8,7 +8,6 @@ export default function Header() {
     <>
       {disable ? (
         <>
-          {" "}
           <header
             className={
               "w-full bg-[#24AE51] h-16 flex justify-around flex-row items-center"
@@ -23,7 +22,7 @@ export default function Header() {
             }
           >
             <div
-              id={active === "red" ? "RedLineButtonActive" : "RedLineButton"}
+              id={active === "Red" ? "RedLineButtonActive" : "RedLineButton"}
               onClick={() => {
                 setActive("red");
               }}
@@ -31,7 +30,7 @@ export default function Header() {
               REDLINE
             </div>
             <div
-              id={active === "blue" ? "BlueLineButtonActive" : "BlueLineButton"}
+              id={active === "Blue" ? "BlueLineButtonActive" : "BlueLineButton"}
               onClick={() => {
                 setActive("blue");
               }}

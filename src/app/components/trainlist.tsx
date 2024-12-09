@@ -7,7 +7,8 @@ export default function TrainList() {
   const [trainList, setTrainList] = useState([]);
   const [reverseTrainList, setReverseTrainList] = useState<string[]>([]);
   const [startTrain, setStartTrain] = useState("");
-  const { active, direction, setDisable } = useContext(TopLevelContext);
+  const { active, direction, setDisable, setRiding, setStartTime } =
+    useContext(TopLevelContext);
 
   //API expectations
   //passes red or blue via params
@@ -41,10 +42,19 @@ export default function TrainList() {
   const handleChoice = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const element = e.target as HTMLInputElement;
-    setStartTrain(element.value);
-    setDisable(true);
+    if (element.value !== "") {
+      setStartTrain(element.value);
+      setDisable(true);
+    }
   };
-
+  const handleSecondChoice = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const element = e.target as HTMLInputElement;
+    if (element.value !== "") {
+      setRiding(active + ":" + startTrain + ":" + element.value);
+      setStartTime(Date.now() / 1000);
+    }
+  };
   const getIndex = (startTrain: string, trainList: string[]) => {
     for (let i = 0; i < trainList.length; i++) {
       if (trainList[i] == startTrain) {
@@ -75,7 +85,10 @@ export default function TrainList() {
             {" "}
             Select End Train
           </div>
-          <form className={"w-full px-4"} onChange={(e) => handleChoice(e)}>
+          <form
+            className={"w-full px-4"}
+            onChange={(e) => handleSecondChoice(e)}
+          >
             <select className={"w-full h-12 text-lg"}>
               {direction === 0 ? (
                 <TrainLine
@@ -107,7 +120,7 @@ export function DirectionDecider() {
           setDirection(0);
         }}
       >
-        {active === "red" ? "Tuscany" : "69 St Station"}
+        {active === "Red" ? "Tuscany" : "69 St Station"}
       </div>
       <div
         id={direction === 1 ? "ButtonActive" : "Button"}
@@ -115,7 +128,7 @@ export function DirectionDecider() {
           setDirection(1);
         }}
       >
-        {active === "blue" ? "Saddletowne" : "Somerset Bridlewood"}
+        {active === "Blue" ? "Saddletowne" : "Somerset Bridlewood"}
       </div>
     </div>
   );
