@@ -41,8 +41,10 @@ export default function TrainList() {
   const handleChoice = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const element = e.target as HTMLInputElement;
-    setStartTrain(element.value);
-    setDisable(true);
+    if (element.value !== "") {
+      setStartTrain(element.value);
+      setDisable(true);
+    }
   };
 
   const getIndex = (startTrain: string, trainList: string[]) => {
