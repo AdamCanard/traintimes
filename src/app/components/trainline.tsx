@@ -1,3 +1,13 @@
-export default function TrainLine(props: { train: string }) {
-  return <div>{props.train}</div>;
+export default function TrainLine(props: { trains: string[] }) {
+  return (
+    <>
+      {props.trains.map((train, index) => {
+        return (
+          <option value={train} key={index}>
+            {train}
+          </option>
+        );
+      })}
+    </>
+  );
 }
