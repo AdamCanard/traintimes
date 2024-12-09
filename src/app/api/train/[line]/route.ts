@@ -3,7 +3,6 @@ export async function GET(
   { params }: { params: Promise<{ line: string }> },
 ) {
   const line = (await params).line;
-  console.log(line);
   if (line === "red") {
     return new Response(
       JSON.stringify({
