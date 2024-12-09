@@ -1,5 +1,5 @@
 import { db } from "../_utils/firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 
 export const addTrip = async (
   start: string,
@@ -12,4 +12,14 @@ export const addTrip = async (
     difference: difference,
   });
   console.log("Trip was created with an ID of ", docRef.id);
+};
+
+export const getTrips = async (start: string, end: string) => {
+  const q = query(
+    collection(db, "times"),
+    where("start", "==", start),
+    where("end", "==", end),
+  );
+  const querySnapshot = await getDocs(q);
+  return querySnapshot;
 };

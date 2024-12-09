@@ -1,9 +1,41 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { TopLevelContext } from "../context/toplevelcontext";
 
 export default function Waiting() {
   const { riding, startTime, setStartTime, setRiding, setDisable } =
     useContext(TopLevelContext);
+
+  useEffect(() => {
+    getAvgTrips();
+  });
+
+  const getAvgTrips = async () => {
+    const formData = new FormData();
+    formData.append("start", riding.split(":")[1]);
+    formData.append("end", riding.split(":")[2]);
+
+    try {
+      const response = await fetch("/api/get-trip", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+      console.log(data);
+    } catch (err) {
+      console.log("error");
+      if (err instanceof Error) {
+        return new Response(
+          JSON.stringify({ error: err.message || err.toString() }),
+          {
+            status: 500,
+            headers: {},
+          },
+        );
+      } else {
+        console.log(err);
+      }
+    }
+  };
 
   const postData = async () => {
     const formData = new FormData();
