@@ -12,7 +12,7 @@ export default function Waiting() {
     formData.append("difference", Date.now() / 1000 - startTime + "");
 
     try {
-      const response = await fetch("/api/time", {
+      const response = await fetch("/api/add-trip", {
         method: "POST",
         body: formData,
       });
