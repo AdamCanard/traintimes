@@ -1,14 +1,17 @@
 import { useContext, useEffect } from "react";
 import { TopLevelContext } from "../context/toplevelcontext";
 import capitalize from "../_utils/capitalize.js";
+import { useState } from "react";
+import TripTime from "./avg-time";
 
 export default function Waiting() {
   const { riding, startTime, setStartTime, setRiding, setDisable } =
     useContext(TopLevelContext);
+  const [trips, setTrips] = useState<[]>([]);
 
   useEffect(() => {
     getAvgTrips();
-  });
+  }, []);
 
   const getAvgTrips = async () => {
     const formData = new FormData();
@@ -22,6 +25,7 @@ export default function Waiting() {
       });
       const data = await response.json();
       console.log(data);
+      setTrips(data);
     } catch (err) {
       console.log("error");
       if (err instanceof Error) {
@@ -36,6 +40,7 @@ export default function Waiting() {
         console.log(err);
       }
     }
+    return null;
   };
 
   const postData = async () => {
@@ -92,6 +97,16 @@ export default function Waiting() {
         >
           {riding.split(":")[2]}
         </div>
+      </div>
+      <div
+        className={
+          "flex flex-col items-center text-lg font-bold text-white p-5"
+        }
+      >
+        Previous trip times:
+        {trips.map((trip, index) => {
+          return <TripTime key={index} difference={trip.difference} />;
+        })}
       </div>
     </div>
   );

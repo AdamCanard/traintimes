@@ -14,7 +14,7 @@ export async function POST(req: Request) {
       console.log(doc.data());
       tripsJson.push(doc.data());
     });
-    return NextResponse.json(JSON.stringify(tripsJson), {
+    return NextResponse.json(tripsJson, {
       status: 200,
     });
   } catch (e) {
