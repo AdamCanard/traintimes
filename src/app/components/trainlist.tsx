@@ -2,6 +2,7 @@
 import { FormEvent, useContext, useEffect, useState } from "react";
 import { TopLevelContext } from "../context/toplevelcontext";
 import TrainLine from "./trainline";
+import { useRouter } from "next/navigation";
 
 export default function TrainList() {
   const [trainList, setTrainList] = useState([]);
@@ -9,6 +10,8 @@ export default function TrainList() {
   const [startTrain, setStartTrain] = useState("");
   const { active, direction, setDisable, setRiding, setStartTime } =
     useContext(TopLevelContext);
+
+  const router = useRouter();
 
   //API expectations
   //passes red or blue via params
@@ -65,11 +68,13 @@ export default function TrainList() {
 
   return (
     <div className={"pt-2 flex flex-col items-center gap-5"}>
-      <h1 className={"text-2xl text-white font-bold text-center mt-5 -mb-3"}>
-        Select a Train Direction:
-      </h1>
       {startTrain === "" ? (
         <>
+          <h1
+            className={"text-2xl text-white font-bold text-center mt-5 -mb-3"}
+          >
+            Select a Train Direction:
+          </h1>
           <DirectionDecider />
           <form className={"w-full px-4"} onChange={(e) => handleChoice(e)}>
             <h2 className={"text-xl text-white font-bold text-center p-2"}>
@@ -110,6 +115,15 @@ export default function TrainList() {
               )
             </select>
           </form>
+          <button
+            onClick={() => {
+              setStartTrain("");
+              setDisable(false);
+            }}
+            className={"text-center bg-red-300 mt-[60vh] py-2 px-5"}
+          >
+            Go Back
+          </button>
         </>
       )}
     </div>
