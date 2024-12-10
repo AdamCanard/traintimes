@@ -22,7 +22,7 @@ export default function Header() {
             }
           >
             <div
-              id={active === "Red" ? "RedLineButtonActive" : "RedLineButton"}
+              id={active === "red" ? "RedLineButtonActive" : "RedLineButton"}
               onClick={() => {
                 setActive("red");
               }}
@@ -30,7 +30,7 @@ export default function Header() {
               REDLINE
             </div>
             <div
-              id={active === "Blue" ? "BlueLineButtonActive" : "BlueLineButton"}
+              id={active === "blue" ? "BlueLineButtonActive" : "BlueLineButton"}
               onClick={() => {
                 setActive("blue");
               }}

@@ -72,16 +72,21 @@ export default function Waiting() {
   };
 
   return (
-    <div className={"flex items-center gap-4 flex-col"}>
-      <div className={"px-8 text-white font-bold text-3xl text-center"}>
-        Riding the {riding.split(":")[0]} Line from {riding.split(":")[1]} to{" "}
-        {riding.split(":")[2]}
+    <div className={"p-5 flex items-center gap-4 flex-col"}>
+      <div className={"px-8 text-white font-bold text-xl text-center"}>
+        Riding the{" "}
+        <span
+          className={`${riding.split(":")[0] === "red" ? "text-[#c0253a]" : "text-[#0089ac]"}`}
+        >
+          {riding.split(":")[0]} Line
+        </span>{" "}
+        from {riding.split(":")[1]} to {riding.split(":")[2]}
       </div>
-      <div>
+      <div className={"flex flex-col items-center"}>
         <div className={"text-white text-md"}>Press me when you get off!</div>
         <div
           id="Button"
-          className={"text-lg text-white text-center font-bold"}
+          className={"text-lg text-white text-center m-5 font-bold"}
           onClick={handleClick}
         >
           {riding.split(":")[2]}

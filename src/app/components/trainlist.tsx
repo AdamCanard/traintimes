@@ -120,7 +120,7 @@ export function DirectionDecider() {
           setDirection(0);
         }}
       >
-        {active === "Red" ? "Tuscany" : "69 St Station"}
+        {active === "red" ? "Tuscany" : "69 St Station"}
       </div>
       <div
         id={direction === 1 ? "ButtonActive" : "Button"}
@@ -128,7 +128,7 @@ export function DirectionDecider() {
           setDirection(1);
         }}
       >
-        {active === "Blue" ? "Saddletowne" : "Somerset Bridlewood"}
+        {active === "blue" ? "Saddletowne" : "Somerset Bridlewood"}
       </div>
     </div>
   );

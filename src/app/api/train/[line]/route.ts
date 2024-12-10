@@ -3,7 +3,7 @@ export async function GET(
   { params }: { params: Promise<{ line: string }> },
 ) {
   const line = (await params).line;
-  if (line === "Red") {
+  if (line === "red") {
     return new Response(
       JSON.stringify({
         trains: [
@@ -42,36 +42,36 @@ export async function GET(
         status: 200,
       },
     );
-  } else if (line === "Blue") {
+  } else if (line === "blue") {
     return new Response(
       JSON.stringify({
         trains: [
-          "Saddletowne",
-          "Martindale",
-          "McKnight-Westwinds",
-          "Whitehorn",
-          "Rundle",
-          "Marlborough",
-          "Franklin",
-          "Barlow Max Bell",
-          "Zoo",
-          "Bridgeland Memorial",
-          "City Hall S",
-          "City Hall N",
-          "Center Street",
-          "1 Street",
-          "3 Street",
-          "4 Street",
-          "6 Street",
-          "7 Street",
-          "8 Street",
-          "Downtown West Kirby",
-          "Sunalta",
-          "Shaganappi Point",
-          "Westbrook",
-          "45 Street",
-          "Sirocco",
           "69 Street",
+          "Sirocco",
+          "45 Street",
+          "Westbrook",
+          "Shaganappi Point",
+          "Sunalta",
+          "Downtown West Kirby",
+          "8 Street",
+          "7 Street",
+          "6 Street",
+          "4 Street",
+          "3 Street",
+          "1 Street",
+          "Center Street",
+          "City Hall N",
+          "City Hall S",
+          "Bridgeland Memorial",
+          "Zoo",
+          "Barlow Max Bell",
+          "Franklin",
+          "Marlborough",
+          "Rundle",
+          "Whitehorn",
+          "McKnight-Westwinds",
+          "Martindale",
+          "Saddletowne",
         ],
       }),
       {
