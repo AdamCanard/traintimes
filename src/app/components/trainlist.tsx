@@ -64,11 +64,17 @@ export default function TrainList() {
   };
 
   return (
-    <div className={"pt-2"}>
+    <div className={"pt-2 flex flex-col items-center gap-5"}>
+      <h1 className={"text-2xl text-white font-bold text-center mt-5 -mb-3"}>
+        Select a Train Direction:
+      </h1>
       {startTrain === "" ? (
         <>
           <DirectionDecider />
           <form className={"w-full px-4"} onChange={(e) => handleChoice(e)}>
+            <h2 className={"text-xl text-white font-bold text-center p-2"}>
+              Select a Starting Stop:
+            </h2>
             <select className={"w-full h-12 text-lg"}>
               {direction === 0 ? (
                 <TrainLine trains={trainList} />

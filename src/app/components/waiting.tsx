@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { TopLevelContext } from "../context/toplevelcontext";
 import capitalize from "../_utils/capitalize.js";
 import { useState } from "react";
-import TripTime from "./avg-time";
+import TripTime from "./trip-time";
 
 export default function Waiting() {
   const { riding, startTime, setStartTime, setRiding, setDisable } =
