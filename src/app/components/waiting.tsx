@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { TopLevelContext } from "../context/toplevelcontext";
+import capitalize from "../_utils/capitalize.js";
 
 export default function Waiting() {
   const { riding, startTime, setStartTime, setRiding, setDisable } =
@@ -78,7 +79,7 @@ export default function Waiting() {
         <span
           className={`${riding.split(":")[0] === "red" ? "text-[#c0253a]" : "text-[#0089ac]"}`}
         >
-          {riding.split(":")[0]} Line
+          {capitalize(riding.split(":")[0])} Line
         </span>{" "}
         from {riding.split(":")[1]} to {riding.split(":")[2]}
       </div>
