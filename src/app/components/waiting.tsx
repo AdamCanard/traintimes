@@ -4,6 +4,12 @@ import capitalize from "../_utils/capitalize.js";
 import { useState } from "react";
 import TripTime from "./trip-time";
 
+interface TripType {
+  start: string;
+  end: string;
+  difference: number;
+}
+
 export default function Waiting() {
   const { riding, startTime, setStartTime, setRiding, setDisable } =
     useContext(TopLevelContext);
@@ -11,6 +17,7 @@ export default function Waiting() {
 
   useEffect(() => {
     getAvgTrips();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getAvgTrips = async () => {
@@ -34,7 +41,7 @@ export default function Waiting() {
           {
             status: 500,
             headers: {},
-          },
+          }
         );
       } else {
         console.log(err);
@@ -66,7 +73,7 @@ export default function Waiting() {
           {
             status: 500,
             headers: {},
-          },
+          }
         );
       } else {
         console.log(err);
@@ -82,7 +89,9 @@ export default function Waiting() {
       <div className={"px-8 text-white font-bold text-xl text-center"}>
         Riding the{" "}
         <span
-          className={`${riding.split(":")[0] === "red" ? "text-[#c0253a]" : "text-[#0089ac]"}`}
+          className={`${
+            riding.split(":")[0] === "red" ? "text-[#c0253a]" : "text-[#0089ac]"
+          }`}
         >
           {capitalize(riding.split(":")[0])} Line
         </span>{" "}
@@ -104,7 +113,7 @@ export default function Waiting() {
         }
       >
         Previous trip times:
-        {trips.map((trip, index) => {
+        {trips.map((trip: TripType, index) => {
           return <TripTime key={index} difference={trip.difference} />;
         })}
       </div>

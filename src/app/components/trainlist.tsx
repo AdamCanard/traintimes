@@ -2,7 +2,6 @@
 import { FormEvent, useContext, useEffect, useState } from "react";
 import { TopLevelContext } from "../context/toplevelcontext";
 import TrainLine from "./trainline";
-import { useRouter } from "next/navigation";
 
 export default function TrainList() {
   const [trainList, setTrainList] = useState([]);
@@ -10,8 +9,6 @@ export default function TrainList() {
   const [startTrain, setStartTrain] = useState("");
   const { active, direction, setDisable, setRiding, setStartTime } =
     useContext(TopLevelContext);
-
-  const router = useRouter();
 
   //API expectations
   //passes red or blue via params
@@ -30,7 +27,7 @@ export default function TrainList() {
           {
             status: 500,
             headers: {},
-          },
+          }
         );
       } else {
         console.log(err);
@@ -40,6 +37,7 @@ export default function TrainList() {
 
   useEffect(() => {
     getTrains();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active]);
 
   const handleChoice = (e: FormEvent<HTMLFormElement>) => {
@@ -108,7 +106,7 @@ export default function TrainList() {
               ) : (
                 <TrainLine
                   trains={reverseTrainList.slice(
-                    getIndex(startTrain, reverseTrainList),
+                    getIndex(startTrain, reverseTrainList)
                   )}
                 />
               )}
